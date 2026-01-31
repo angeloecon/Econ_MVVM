@@ -1,21 +1,30 @@
 package com.example.mvvm_activity;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import java.util.ArrayList;
+import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+public class PartsViewModel extends ViewModel {
 
-public class PartsViewModel extends RecyclerView.ViewHolder {
-    ImageView imagePart;
-    TextView partName, part;
+    private MutableLiveData<List<PartsModel>> _partsList;
 
+    public LiveData<List<PartsModel>> getParts() {
+        if (_partsList == null) {
+            _partsList = new MutableLiveData<>();
+            loadParts();
+        }
+        return _partsList;
+    }
 
-    public PartsViewModel(@NonNull View itemView) {
-        super(itemView);
-        imagePart = itemView.findViewById(R.id.partImage);
-        partName = itemView.findViewById(R.id.partName);
-        part = itemView.findViewById(R.id.part);
+    private void loadParts() {
+        List<PartsModel> parts = new ArrayList<>();
+
+        parts.add(new PartsModel("CPU", "Ryzen 9 9950x3D", R.drawable.r9));
+        parts.add(new PartsModel("MotherBoard", "Asus ROG", R.drawable.asusmobo));
+        parts.add(new PartsModel("RAM", "Trident-Z DDR5 2x16gb", R.drawable.ddr5));
+        parts.add(new PartsModel("GPU", "RTX 5090", R.drawable.rtx5090));
+        _partsList.setValue(parts);
     }
 }
