@@ -16,8 +16,8 @@ com.example.mvvm_activity
 ## 🚀 Getting Started
 1. Clone or Open the project in Android Studio.
 2. Run the App:
-* Connect an Android device or start an Emulator.
-* Click the Run (▶) button.
+3. Connect an Android device or start an Emulator.
+4. Click the Run (▶) button.
 
 ## 📸 Screenshots
 
